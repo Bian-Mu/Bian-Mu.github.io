@@ -44,5 +44,16 @@ img[src] {
 /*选择仅在鼠标指针悬停在链接上时的 <a> 元素*/
 a:hover {
     color: rgb(218, 144, 144);
-    border: 10px solid rgb(208, 125, 208);
+}
+
+q{
+    font-size: smaller;
+}
+
+.time-container{
+    text-align: right;
+}
+
+time{
+    color:aqua;
 }

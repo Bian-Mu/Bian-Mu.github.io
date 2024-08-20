@@ -1,14 +1,25 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8" />
     <!--依靠视窗宽度渲染，避免移动端默认缩放-->
     <meta name="viewport" content="width=device-width" />
+
+    <meta name="author" content="bianmu" />
+
+    <!--作为搜索引擎处的显示内容-->
+    <meta name="description" content="self blog exploiting" />
+
+    <!--网页图表以及标题-->
+    <link rel="icon" href="images/gou.jpg">
     <title>My test page</title>
 
     <!--加入css-->
     <link href="styles/style.css" rel="stylesheet" />
+
+    <!--加入js,defer要求在整个html加载后再加载当前资源-->
+    <script src="scripts/main.js" defer></script>
 </head>
 
 <body>
@@ -16,6 +27,7 @@
     <!--图像路径source,图像描述词alter（加载错误时出现）-->
     <img src="images/xiaogou.jpg" alt="My test image" />
     <p class="editor-note">my <strong>dog</strong> is so cute</p>
+
     <p>一个无序列表</p>
     <ul>
         <li id="ele1">ele1</li>
@@ -23,16 +35,49 @@
     </ul>
     <p>一个有序列表</p>
     <ol>
-        <li>ele3</li>
-        <li>ele4</li>
+        <li><a href="htmls/main_page.html">main_page.html</a></li>
+        <li><a href="htmls/other.html">other.html</a></li>
     </ol>
 
-    <!--一个链接-->
-    <a href="https://bilibili.com">b站链接</a>
+    <!--blockquote=块引用 q=引用-->
+    <p>一个描述列表-<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%9F%8E%E8%AE%B0"><q
+                cite="https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%9F%8E%E8%AE%B0">那是最好的时代</q></a></p>
+    <div>
+        <dl>边牧</dl>
+        <dd>my <abbr title="original character">oc</abbr></dd>
+        <dl>bianmu</dl>
+        <dd>use in english</dd>
+        <dl>border collie</dl>
+        <dd>truly english name</dd>
+    </div>
+    <p>try to use lang signal:<span lang="ja">ご</span></p>
+    <!-- 使用 disabled 属性来防止终端用户输入文本到输入框中 -->
+    <input type="text" disabled />
 
-    <!--加入js-->
-    <button>切换用户</button>
-    <script src="scripts/main.js" defer></script>
+    <!-- 下面这个输入框不包含 disabled 属性，所以用户可以向其中输入 -->
+    <input type="text" />
+
+    <!--一个链接,target属性表示如何呈现链接所指（新标签页、当前页等）-->
+    <a href="https://bilibili.com" title="随便'找'个链接" target="_blank">b站链接</a>
+
+    <!--标识联系方式-->
+    <address>联系我：<a href="mailto:bianmu.sky@gmail.com?subject=bianmu.sky@gmail.com&">邮件</a></address>
+    
+    <button><mark>切换用户</mark></button>
+    
+    <!--pre=保留空格 code=代码/代码块 samp=程序输出-->
+    <pre><code>const para = document.querySelector('p');
+
+        para.onclick = function() {
+          alert('噢，噢，噢，别点我了。');
+        }</code></pre>
+    <pre>$ <kbd>ping mozilla.org</kbd>
+            <samp>PING mozilla.org (63.245.215.20): 56 data bytes
+            64 bytes from 63.245.215.20: icmp_seq=0 ttl=40 time=158.233 ms</samp></pre>
+
+    <hr>
+    <!--一般包括页眉header、导航nav、主体main、侧边aside、页脚footer-->
+    <footer><div class="time-container"><time datetime="2024-8-19">2024-8-19</time></div></footer>
 </body>
 
 </html>
