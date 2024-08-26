@@ -24,10 +24,11 @@
 
 <body>
     <h1>一张小狗图片</h1>
-    <!--图像路径source,图像描述词alter（加载错误时出现）-->
-    <img src="images/xiaogou.jpg" alt="My test image" />
-    <p class="editor-note">my <strong>dog</strong> is so cute</p>
-
+    <figure>
+        <!--图像路径source,图像描述词alter（加载错误时出现）-->
+        <img src="images/xiaogou.jpg" alt="My test image" />
+        <figcaption class="editor-note">my <strong>dog</strong> is so cute</figcaption>
+    </figure>
     <p>一个无序列表</p>
     <ul>
         <li id="ele1">ele1</li>
@@ -62,9 +63,22 @@
 
     <!--标识联系方式-->
     <address>联系我：<a href="mailto:bianmu.sky@gmail.com?subject=bianmu.sky@gmail.com&">邮件</a></address>
-    
+
     <button><mark>切换用户</mark></button>
-    
+
+    <video src="./videos/rabbit320.mp4" controls>
+        <p>
+            你的浏览器不支持 HTML 视频。可点击<a href="">此链接</a>观看。
+        </p>
+    </video>
+    <audio controls>
+        <source src="./audios/viper.mp3" type="audio/mp3" />
+        <p>你的浏览器不支持该音频，可点击<a href="">此链接</a>收听。</p>
+    </audio>
+    <!--嵌入第三方内容/其他内容-->
+    <iframe
+        src="https://player.bilibili.com/player.html?isOutside=true&aid=1102194073&bvid=BV1fA4m1P7qK&cid=1479574617&p=1"
+        scrolling="no" border="1" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     <!--pre=保留空格 code=代码/代码块 samp=程序输出-->
     <pre><code>const para = document.querySelector('p');
 
@@ -76,8 +90,16 @@
             64 bytes from 63.245.215.20: icmp_seq=0 ttl=40 time=158.233 ms</samp></pre>
 
     <hr>
+
+    
     <!--一般包括页眉header、导航nav、主体main、侧边aside、页脚footer-->
-    <footer><div class="time-container"><time datetime="2024-8-19">2024-8-19</time></div></footer>
+    <footer>
+        <svg width="300" height="100">
+            <rect width="100%" height="100%" fill="pink" />
+        </svg>
+
+        <div class="time-container"><time datetime="2024-8-19">2024-8-19</time></div>
+    </footer>
 </body>
 
 </html>

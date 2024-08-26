@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="zh-CN">
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <picture>
+        <source media="(max-width: 799px)" srcset="./y.jpg" />
+        <source media="(min-width: 800px)" srcset="./x.jpg" />
+        <img src="./x.jpg" alt="" />
+    </picture>
+    <!--第二个方式似乎是静态判断-->
+    <img srcset="./y.jpg 578w, ./x.jpg 956w" sizes="(max-width:800px) 578px, 956px" src="./x.jpg"
+        alt="" />
+</body>
+
+</html>
