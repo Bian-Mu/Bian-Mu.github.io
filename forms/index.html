@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        form {
+            margin: 0 auto;
+            width: 500px;
+            padding: 3em;
+            border: 2px solid brown;
+            border-radius: 1em;
+        }
+
+        form li+li {
+            margin-top: 0.5em;
+        }
+
+        label {
+            /*聚焦*/
+            display: inline-block;
+
+            width: 40px;
+            text-align: right;
+        }
+
+        input,
+        textarea {
+            width: 300px;
+            border: 1px solid blue;
+        }
+
+        textarea {
+            /* 使多行文本输入框和它们的 label 正确对齐 */
+            vertical-align: top;
+
+            /* 给文本留下足够的空间 */
+            height: 5em;
+        }
+
+        .button {
+            padding: 10px;
+        }
+
+        button {
+            /* 这个外边距的大小与 label 和文本输入框之间的间距差不多 */
+            margin-left: 0.5em;
+        }
+
+        section{
+            text-align: center;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <!--action表面获取数据后交给哪个url处理；method表示处理请求的http方法-->
+    <form action="./handling-page" method="psot">
+        <ul>
+            <li>
+                <!--label指代提示框 for对应输入框的id-->
+                <label for="name">名字:</label>
+                <input type="text" id="name" name="user_name" disabled value="你不许输入"/>
+                <!--input中的type指代了该输入框的行为-->
+                <!--text是默认值-->
+            </li>
+            <li>
+                <label for="mail">邮件:</label>
+                <input type="email" id="mail" name="user_email" readonly value="看看就好"/>
+                <!--email只接受正确格式的电子邮件地址-->
+            </li>
+            <li>
+                <label for="other">其他:</label>
+                <textarea id="other" name="user_other">畅所欲言</textarea>
+            </li>
+            <li class="button">
+                <!--button的type有submit,reset,button三种值-->
+                <!--submit:发送到action；reset：将所有框恢复到默认值；button:对应的js操作-->
+                <button type="submit">发送</button>
+            </li>
+        </ul>
+    </form>
+    <form>
+            <p>
+                <input type="checkbox" id="taste_1" name="taste_cherry" value="1" />
+                <label for="taste_1">I like cherry</label>
+            </p>
+            <p>
+                <input type="checkbox" id="taste_2" name="taste_banana" value="2" />
+                <label for="taste_2">I like banana</label>
+            </p>
+    </form>
+    <form>
+    <section>
+        <span>this is a choice.</span>
+        <select id="choose" name="user_choice">
+            <option value="1">1</option>
+            <option value="0.5">0.5</option>
+            <option value="0">0</option>
+        </select>
+    </section>
+    </form>
+</body>
+
+</html>

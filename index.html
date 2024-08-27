@@ -52,11 +52,57 @@
         <dd>truly english name</dd>
     </div>
     <p>try to use lang signal:<span lang="ja">ご</span></p>
-    <!-- 使用 disabled 属性来防止终端用户输入文本到输入框中 -->
-    <input type="text" disabled />
 
-    <!-- 下面这个输入框不包含 disabled 属性，所以用户可以向其中输入 -->
-    <input type="text" />
+    <form>
+        <!-- 使用 disabled 属性来防止终端用户输入文本到输入框中 -->
+        <input type="text" readonly value="你好" />
+
+        <!-- 下面这个输入框不包含 disabled 属性，所以用户可以向其中输入 -->
+        <input type="text" placeholder="随便输入" />
+
+        <!-- 密码框-->
+        <input type="password" id="pwd" name="pwd">
+
+        <div>
+            <!-- 复选框 checked指代是否选中-->
+            <!--checked会让该框在css中属于“:default”类，无论是否选中；被选中的框属于“:checked”类-->
+            <input type="checkbox" id="question1" name="q1" checked />
+            <label for="question1">choice1</label>
+            <input type="checkbox" id="question2" name="q1" disabled />
+            <label for="question2">choice2</label>
+            <input type="checkbox" id="question3" name="q1" />
+            <label for="question3">choice3</label>
+        </div>
+
+        <div>
+            <!-- 单选框 checked指代是否选中-->
+            <!--checked会让该框在css中属于“:default”类，无论是否选中；被选中的框属于“:checked”类-->
+            <input type="radio" id="answer1" name="a1" checked />
+            <label for="answer1">choice1</label>
+            <input type="radio" id="answer2" name="a1" />
+            <label for="answer2">choice2</label>
+            <!--name是该组名称 id和for对应，指明该一个选项-->
+        </div>
+
+        <!-- 隐藏框，不允许有label-->
+        <input type="hidden" id="timestamp" name="timestamp" value="">
+
+        <section>
+            <span>this is a choice.</span>
+            <select id="choose" name="user_choice">
+                <option value="1">1</option>
+                <option value="0.5">0.5</option>
+                <option value="0">0</option>
+            </select>
+        </section>
+
+        <!--图像按钮，点击行为等于submit点击坐标-->
+        <input type="image" alt="a picture button" src="./images/gougou.jpg" width="60" height="30" />
+
+        <!--文件选择器，向用户弹出accept指定类型的文件请求 mutiple表示可以多个-->
+        <input type="file" name="file" id="file" accept="image/*" multiple />
+
+    </form>
 
     <!--一个链接,target属性表示如何呈现链接所指（新标签页、当前页等）-->
     <a href="https://bilibili.com" title="随便'找'个链接" target="_blank">b站链接</a>
@@ -91,7 +137,7 @@
 
     <hr>
 
-    
+
     <!--一般包括页眉header、导航nav、主体main、侧边aside、页脚footer-->
     <footer>
         <svg width="300" height="100">

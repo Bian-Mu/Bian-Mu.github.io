@@ -8,19 +8,27 @@ html {
 h1 {
     font-size: 50px;
     text-align: center;
-    text-shadow: 3px 3px 1px white;/*水平 垂直 半径 颜色*/
+    text-shadow: 3px 3px 1px white;
+    /*水平 垂直 半径 颜色*/
 }
 
 body {
     width: 600px;
-    margin: 0 auto;/*纵向 横向*/
+    margin: 0 auto;
+    /*纵向 横向*/
     background-color: #5b6662;
-    padding: 0 20px 20px 20px;/*上右下左*/
+    padding: 0 20px 20px 20px;
+    /*上右下左*/
     border: 5px dashed black;
-  }
-  
+}
+
+form {
+    border: 3px solid black;
+}
+
 p,
-#ele1,#ele2 {
+#ele1,
+#ele2 {
     color: pink;
     width: 150px;
     border: 3px double rgb(159, 159, 122);
@@ -38,8 +46,9 @@ p,
 
 img[src] {
     width: 500px;
-    display: block;/*让行级别的元素img具备块级别的功能*/
-    margin:0 auto;
+    display: block;
+    /*让行级别的元素img具备块级别的功能*/
+    margin: 0 auto;
 }
 
 /*选择仅在鼠标指针悬停在链接上时的 <a> 元素*/
@@ -47,14 +56,14 @@ a:hover {
     color: rgb(218, 144, 144);
 }
 
-q{
+q {
     font-size: smaller;
 }
 
-.time-container{
+.time-container {
     text-align: right;
 }
 
-time{
-    color:aqua;
+time {
+    color: aqua;
 }
