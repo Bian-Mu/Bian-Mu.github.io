@@ -74,3 +74,9 @@ body {
 div {
     border-bottom: 5px outset white;
 }
+
+#hello1 {
+    text-align: right;
+    text-indent: 2em;
+    width: 100px;
+}
