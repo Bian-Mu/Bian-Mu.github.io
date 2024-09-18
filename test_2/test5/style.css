@@ -1,0 +1,138 @@
+/* General setup */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  min-width: 1000px;
+  max-width: 1400px;
+}
+
+/* Layout */
+
+section {
+  float: left;
+  width: 50%;
+}
+
+aside {
+  float: left;
+  width: 30%;
+}
+
+nav {
+  float: left;
+  width: 20%;
+}
+
+footer {
+  clear: both;
+}
+
+header,
+section,
+aside,
+nav,
+footer {
+  padding: 20px;
+}
+
+/* header and footer */
+
+header,
+footer {
+  border-top: 5px solid #a66;
+  border-bottom: 5px solid #a66;
+}
+
+/* WRITE YOUR CODE BELOW HERE */
+
+header {
+  font-family: sans-serif;
+}
+
+body {
+  font-family: serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 5rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+h2 {
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.5em;
+  word-spacing: 0.2em;
+}
+
+ul,
+ol {
+  font-size: 1.5rem;
+  line-height: 1.5em;
+}
+
+h2+p {
+  text-indent: 20px;
+}
+
+a {
+  color: #a66;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: none;
+}
+
+a:active {
+  color: blueviolet;
+}
+
+a[href^="http"] {
+  /* 右上角 */
+  background: url("external-link-52.png") no-repeat 100% 0;
+  background-size: 1.6rem 1.6rem;
+  padding-right: 19px;
+}
+
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: lower-alpha;
+}
+
+nav ul {
+  list-style-type: none;
+
+}
+
+nav ul li {
+  border: 2px solid #a66;
+  text-align: center;
+  font-size: 2rem;
+  padding: 10%;
+  margin: 5%;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
