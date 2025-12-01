@@ -1,14 +1,15 @@
-import { Folder, BlogPost } from '../content/blogData'
-import '../styles/Sidebar.css'
+import { contentIndex } from '../content/index';
+import { Folder, ContentItem } from '../types/content';
+import '../styles/Sidebar.css';
 
 interface SidebarProps {
   folders: Folder[]
   toggleFolder: (folderId: string) => void
-  selectPost: (post: BlogPost) => void
-  selectedPostId?: string
+  selectPost: (post: ContentItem) => void
+  selectedPostPath?: string
 }
 
-function Sidebar({ folders, toggleFolder, selectPost, selectedPostId }: SidebarProps) {
+function Sidebar({ folders, toggleFolder, selectPost, selectedPostPath }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="profile">
@@ -21,7 +22,7 @@ function Sidebar({ folders, toggleFolder, selectPost, selectedPostId }: SidebarP
         </div>
         <h2 className="nickname">Bian-Mu</h2>
       </div>
-      
+
       <nav className="folder-list">
         {folders.map(folder => (
           <div key={folder.id} className="folder">
@@ -34,13 +35,13 @@ function Sidebar({ folders, toggleFolder, selectPost, selectedPostId }: SidebarP
               </span>
               <span className="folder-name">{folder.name}</span>
             </button>
-            
+
             {folder.isOpen && (
               <ul className="post-list">
                 {folder.posts.map(post => (
                   <li
-                    key={post.id}
-                    className={`post-item ${selectedPostId === post.id ? 'selected' : ''}`}
+                    key={post.path}
+                    className={`post-item ${selectedPostPath === post.path ? 'selected' : ''}`}
                     onClick={() => selectPost(post)}
                   >
                     <span className="post-icon">📄</span>

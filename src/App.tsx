@@ -2,28 +2,48 @@ import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import TableOfContents from './components/TableOfContents'
-import { blogData, Folder, BlogPost } from './content/blogData'
+import { contentIndex } from './content/index'
 import './styles/App.css'
+import type { ContentItem, Folder, Post } from './types/content'
 
 function App() {
-  const [folders, setFolders] = useState<Folder[]>(blogData)
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
-  const [headings, setHeadings] = useState<{ id: string; text: string }[]>([])
+  const [folders, setFolders] = useState<Folder[]>(() => {
+    const grouped: { [key: string]: ContentItem[] } = {};
+    contentIndex.forEach(item => {
+      const parts = item.path.split('/');
+      const folderName = parts[0];
+      if (!grouped[folderName]) {
+        grouped[folderName] = [];
+      }
+      grouped[folderName].push(item);
+    });
+
+    return Object.entries(grouped).map(([id, posts]) => ({
+      id,
+      name: id.charAt(0).toUpperCase() + id.slice(1),
+      isOpen: true,
+      posts,
+    }));
+  });
+
+  const [selectedPost, setSelectedPost] = useState<ContentItem | null>(null);
+  const [headings, setHeadings] = useState<{ id: string; text: string }[]>([]);
 
   const toggleFolder = (folderId: string) => {
     setFolders(folders.map(folder =>
       folder.id === folderId
         ? { ...folder, isOpen: !folder.isOpen }
         : folder
-    ))
-  }
+    ));
+  };
 
-  const selectPost = (post: BlogPost) => {
-    setSelectedPost(post)
-  }
+  const selectPost = (post: ContentItem) => {
+    // We'll load the content dynamically in Content.tsx
+    setSelectedPost(post);
+  };
 
   useEffect(() => {
-    if (selectedPost) {
+    if (selectedPost && 'content' in selectedPost) {
       const h3Regex = /^### (.+)$/gm
       const matches: { id: string; text: string }[] = []
       let match
@@ -51,7 +71,7 @@ function App() {
         folders={folders}
         toggleFolder={toggleFolder}
         selectPost={selectPost}
-        selectedPostId={selectedPost?.id}
+        selectedPostPath={selectedPost?.path}
       />
       <Content post={selectedPost} />
       <TableOfContents
