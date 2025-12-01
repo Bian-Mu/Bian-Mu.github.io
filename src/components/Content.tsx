@@ -1,24 +1,11 @@
 import ReactMarkdown from 'react-markdown'
 import { ContentItem } from '../types/content'
 import { useState, useEffect } from 'react'
+import { getMarkdownContent } from '../content/index'
 import '../styles/Content.css'
 
 interface ContentProps {
   post: ContentItem | null
-}
-
-// Load markdown file via fetch
-const loadMarkdown = async (path: string): Promise<string> => {
-  try {
-    const response = await fetch(`/content/${path}.md`)
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${path}.md: ${response.status}`)
-    }
-    return await response.text()
-  } catch (error) {
-    console.error(`Failed to load markdown: ${path}`, error)
-    return '# 文章加载失败'
-  }
 }
 
 interface HeadingProps {
@@ -28,21 +15,14 @@ interface HeadingProps {
 
 const Content: React.FC<ContentProps> = ({ post }) => {
   const [content, setContent] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    const fetchContent = async () => {
-      if (post) {
-        setLoading(true)
-        const mdContent = await loadMarkdown(post.path)
-        setContent(mdContent)
-        setLoading(false)
-      } else {
-        setContent('')
-      }
+    if (post) {
+      const mdContent = getMarkdownContent(post.path)
+      setContent(mdContent || '# 文章加载失败')
+    } else {
+      setContent('')
     }
-
-    fetchContent()
   }, [post])
 
   if (!post) {
@@ -52,14 +32,6 @@ const Content: React.FC<ContentProps> = ({ post }) => {
           <h1>欢迎来到我的博客</h1>
           <p>请从左侧选择一篇文章开始阅读</p>
         </div>
-      </main>
-    )
-  }
-
-  if (loading) {
-    return (
-      <main className="content">
-        <div className="loading">加载中...</div>
       </main>
     )
   }
