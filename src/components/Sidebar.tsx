@@ -1,4 +1,3 @@
-import { contentIndex } from '../content/index';
 import { Folder, ContentItem } from '../types/content';
 import '../styles/Sidebar.css';
 

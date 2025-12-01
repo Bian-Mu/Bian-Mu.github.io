@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import TableOfContents from './components/TableOfContents'
-import { contentIndex } from './content/index'
+import { contentIndex, getMarkdownContent } from './content/index'
 import './styles/App.css'
-import type { ContentItem, Folder, Post } from './types/content'
+import type { ContentItem, Folder } from './types/content'
 
 function App() {
   const [folders, setFolders] = useState<Folder[]>(() => {
@@ -38,21 +38,25 @@ function App() {
   };
 
   const selectPost = (post: ContentItem) => {
-    // We'll load the content dynamically in Content.tsx
     setSelectedPost(post);
   };
 
   useEffect(() => {
-    if (selectedPost && 'content' in selectedPost) {
-      const h3Regex = /^### (.+)$/gm
-      const matches: { id: string; text: string }[] = []
-      let match
-      while ((match = h3Regex.exec(selectedPost.content)) !== null) {
-        const text = match[1].trim()
-        const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
-        matches.push({ id, text })
+    if (selectedPost) {
+      const content = getMarkdownContent(selectedPost.path);
+      if (content) {
+        const h3Regex = /^### (.+)$/gm
+        const matches: { id: string; text: string }[] = []
+        let match
+        while ((match = h3Regex.exec(content)) !== null) {
+          const text = match[1].trim()
+          const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+          matches.push({ id, text })
+        }
+        setHeadings(matches)
+      } else {
+        setHeadings([])
       }
-      setHeadings(matches)
     } else {
       setHeadings([])
     }
