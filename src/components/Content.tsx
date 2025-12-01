@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import { ContentItem } from '../types/content'
 import { useState, useEffect } from 'react'
-import { getMarkdownContent } from '../content/index'
+import grayMatter from 'gray-matter';
 import '../styles/Content.css'
 
 interface ContentProps {
@@ -18,10 +18,26 @@ const Content: React.FC<ContentProps> = ({ post }) => {
 
   useEffect(() => {
     if (post) {
-      const mdContent = getMarkdownContent(post.path)
-      setContent(mdContent || '# 文章加载失败')
+      const fetchContent = async () => {
+        try {
+          const response = await fetch(`/${post.path}`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch content');
+          }
+          const text = await response.text();
+          try {
+            const { content: markdownContent } = grayMatter(text);
+            setContent(markdownContent);
+          } catch (error) {
+            setContent('# 文章加载失败');
+          }
+        } catch (error) {
+          setContent('# 文章加载失败');
+        }
+      };
+      fetchContent();
     } else {
-      setContent('')
+      setContent('');
     }
   }, [post])
 
