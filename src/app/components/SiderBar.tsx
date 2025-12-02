@@ -23,7 +23,7 @@ const SiderBar: React.FC<SiderBarProps> = ({ categories, onPostSelect }) => {
 
     const renderTree = (items: PostCategory[]) => {
         return (
-            <ul className="space-y-1.5 overflow-y-auto no-scrollbar h-[500px]">
+            <ul className="space-y-1.5 overflow-y-auto no-scrollbar h-[400px]">
                 {items.map((category) => (
                     <li key={category.path}>
                         <div
@@ -63,7 +63,7 @@ const SiderBar: React.FC<SiderBarProps> = ({ categories, onPostSelect }) => {
                 </div>
                 <span className="self-center text-2xl">A,Border,Collie</span>
             </div>
-            <div className="pt-10 px-8  h-[500px] bg-background">
+            <div className="pt-5 px-4  h-[400px] bg-background">
                 {renderTree(categories)}
             </div>
             <FadeEdge height={200} toBottom={false} opacity={100} />
