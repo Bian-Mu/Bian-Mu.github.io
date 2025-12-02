@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ededed;
+  --foreground: #121212;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
 }
 
 @theme inline {
@@ -14,7 +27,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #121212;
     --foreground: #ededed;
   }
 }
@@ -22,5 +35,82 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
+}
+
+@layer base {
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight mb-6;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight mb-4;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold mb-3 mt-16;
+  }
+
+  h4 {
+    @apply text-xl font-medium mb-2 mt-8;
+  }
+
+  p {
+    @apply text-base leading-relaxed mb-4 mx-4;
+  }
+
+  code {
+    @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono mx-4;
+  }
+
+  pre {
+    @apply bg-gray-200 dark:bg-gray-900 text-black dark:text-amber-50 p-4 rounded-lg overflow-x-auto my-4 mx-4;
+  }
+
+  pre code {
+    @apply bg-transparent text-inherit p-0 mx-4;
+  }
+
+  a {
+    @apply text-blue-600 hover:text-blue-800 underline transition-colors;
+  }
+
+  ul,
+  ol {
+    @apply mb-4 pl-6;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply mb-1;
+  }
+
+  table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  th,
+  td {
+    @apply border border-gray-300 px-4 py-2;
+  }
+
+  th {
+    @apply bg-gray-100 font-semibold;
+  }
+
+  blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic my-4 text-gray-600;
+  }
+
+  hr {
+    @apply my-8 border-gray-200;
+  }
 }
