@@ -61,7 +61,7 @@ body {
   }
 
   code {
-    @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono mx-4;
+    @apply border-black dark:border-amber-50 border-2 px-0.5 py-0 rounded text-sm font-mono mx-2;
   }
 
   pre {
@@ -99,11 +99,11 @@ body {
 
   th,
   td {
-    @apply border border-gray-300 px-4 py-2;
+    @apply border px-4 py-2;
   }
 
   th {
-    @apply bg-gray-100 font-semibold;
+    @apply font-semibold;
   }
 
   blockquote {
