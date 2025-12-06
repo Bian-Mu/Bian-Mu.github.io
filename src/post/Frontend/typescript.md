@@ -4,11 +4,13 @@
 #### 基础类型与窄化
 
 - 原始：string, number, boolean, bigint, symbol, null, undefined
-    ```
+  
+  ```ts
     //symbol创建的值是唯一的（同值不同地址），解决命名冲突问题，无法运算
     let name = Symbol("test")
     console.log(name) //Symbol(test)
-    ```
+  ```
+
 - 特殊：any, unknown, never, void
   - any会绕过检查
   - unknown是需要窄化后使用的any
@@ -19,13 +21,14 @@
 - 数组：[]
   - 元组：数组中元素类型不同，如`let tuple:[number, string]`
 - 窄化：typeof, instanceof, in
-    ```
+  
+  ```ts
     //instanceof用于溯源原型链
     test instanceof Object //检查test是否拥有Object.prototype
 
     //in检查属性是否在对象或其原型链中
     "PI" in Math  //true
-    ```
+  ```
 
 #### type、interface
 
@@ -34,7 +37,8 @@
 #### 泛型
 
 定义时对函数与类加上类型，也可以有约束
-```
+
+```ts
 function getProp<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
@@ -67,4 +71,3 @@ function logLen<T extends { length: number }>(x: T) {
 - `InstanceType<T>`：获取构造函数类型 T 的实例类型。
 - `ConstructorParameters<T>`：构造函数参数元组。
 - `Awaited<T>`：获取 Promise/thenable 内层解析类型（TS 4.5+）。
-

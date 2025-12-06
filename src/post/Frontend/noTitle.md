@@ -19,7 +19,7 @@
 
 用json定义数据结构，实现复用功能更高级的抽象，实现公共处理方法
 
-```
+```ts
     const userSchema = {
         type: 'object',
         properties:{
