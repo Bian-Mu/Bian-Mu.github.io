@@ -1,3 +1,15 @@
+
+### React
+
+#### 展示组件与容器组件
+
+将UI与数据分离，展示组件仅接受props，尽可能不依赖上下文；在容器组件中调用api、store、订阅等
+
+##### React.memo与React.useCallback
+
+memo:当父组件重新渲染且传入该子组件的props与上一次浅比较相等时，跳过子组件渲染并复用上一次输出
+useCallback:稳定要传给子组件的函数，帮助实现浅比较一致
+
 ### Nextjs
 
 - 服务端渲染SSR：提升首屏加载和搜索引擎优化SEO（利于爬虫高效获取html内容）
