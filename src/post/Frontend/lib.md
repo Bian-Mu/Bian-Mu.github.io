@@ -22,3 +22,7 @@ drag/drop，同时可以不使用transform来移动仪表可选项，达成复�
 ### react-router
 
 browserouter、routes、route、outlet
+
+### 包管理工具
+
+pnpm解决了yarn、npm的幻影依赖问题
