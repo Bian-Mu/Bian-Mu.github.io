@@ -26,3 +26,7 @@ browserouter、routes、route、outlet
 ### 包管理工具
 
 pnpm解决了yarn、npm的幻影依赖问题
+
+### AntDesign
+
+可以通过less变量或者design token定制配色与样式

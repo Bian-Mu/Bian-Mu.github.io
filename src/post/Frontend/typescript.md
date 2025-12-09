@@ -6,6 +6,7 @@
 - 原始：string, number, boolean, bigint, symbol, null, undefined
   
   ```ts
+
     //symbol创建的值是唯一的（同值不同地址），解决命名冲突问题，无法运算
     let name = Symbol("test")
     console.log(name) //Symbol(test)
@@ -23,6 +24,7 @@
 - 窄化：typeof, instanceof, in
   
   ```ts
+
     //instanceof用于溯源原型链
     test instanceof Object //检查test是否拥有Object.prototype
 
@@ -39,6 +41,7 @@
 定义时对函数与类加上类型，也可以有约束
 
 ```ts
+
 function getProp<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }

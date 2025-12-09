@@ -19,6 +19,18 @@ json注册成图表
 
 捕获最后的文本节点，添加一个新字符
 
+### 懒加载
+
+1. 原生属性如iframe/img loading="lazy"
+2. 数据的延迟fetch
+3. 路由按需加载
+4. js代码分割
+5. CDN+本地缓存策略
+
+### Web语义化
+
+语义化的html标签可以提升可访问性、SEO、可维护性
+
 ### 单点登陆
 
 1. 在认证中心存储session，客户端存储包含sessionId的cookie，当用户访问子系统时提交cookie，由子系统鉴权
