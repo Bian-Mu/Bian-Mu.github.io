@@ -61,15 +61,15 @@ body {
   }
 
   code {
-    @apply px-0.5 py-0 rounded text-sm font-mono mx-2;
+    @apply px-2 py-0 rounded text-sm font-mono mx-2;
   }
 
   pre {
-    @apply bg-gray-200 dark:bg-gray-900 text-black dark:text-amber-50 p-4 rounded-lg overflow-x-auto my-4 mx-4;
+    @apply border-x-16 border-y-12 border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-gray-700 text-black dark:text-amber-50 p-0 rounded-lg overflow-x-auto m-0;
   }
 
   pre code {
-    @apply bg-transparent text-inherit p-0 mx-4;
+    @apply bg-transparent p-0 m-0;
   }
 
   a {
