@@ -76,3 +76,8 @@ justify-self //格子水平对齐
 - 容器查询
 - 相对单位
 - clamp函数流体排版
+
+### postition
+
+fixed在父元素transform的情况下会失效，即不再相对视口固定，此时可以用portal方式将所需fixed组件放置在body中避免影响
+
