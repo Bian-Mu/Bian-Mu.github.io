@@ -23,3 +23,15 @@
 - 修改原数组: push(), pop(), shift(), unshift(), splice(), sort(), reverse(), fill()
 - 不修改原数组: concat(), join(), slice(), indexOf(), lastIndexOf(), includes()
 - 遍历方法: forEach(), map(), filter(), reduce(), reduceRight(), every(), some(), find(), findIndex()
+
+### 如何执行一个字符串s
+
+1. `eval(s)` 同步，局部作用域
+2. `setTimeout(s,0)` 异步，全局作用域
+3. `const code=document.createElement('script').innerHTML=s; document.body.appendChild(code)` 同步，全局作用域
+4. `new Function(s){}` 同步，全局作用域
+
+### 字符串的操作
+
+1. `s.padStart(sum,char)`当s长度不足sum时前置补char
+2. s为只包含数字的字符串时，`numS=+s`会直接赋其number值

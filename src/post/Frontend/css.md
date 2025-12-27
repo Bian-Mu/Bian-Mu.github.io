@@ -81,3 +81,6 @@ justify-self //格子水平对齐
 
 fixed在父元素transform的情况下会失效，即不再相对视口固定，此时可以用portal方式将所需fixed组件放置在body中避免影响
 
+### 提高图片/canvas清晰度
+
+使得原始尺寸=样式尺寸*dpr（`devicePixelRatio`）

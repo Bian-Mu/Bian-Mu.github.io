@@ -74,3 +74,30 @@ function logLen<T extends { length: number }>(x: T) {
 - `InstanceType<T>`：获取构造函数类型 T 的实例类型。
 - `ConstructorParameters<T>`：构造函数参数元组。
 - `Awaited<T>`：获取 Promise/thenable 内层解析类型（TS 4.5+）。
+
+#### 逆变与协变
+
+```ts
+//协变
+interface Parent {
+  a:string
+}
+
+interface Child extends Parent {
+  b:string
+}
+
+let p:Parent = {a:'a'}
+let c:Child = {a:'a',b:'b'}
+
+p = c //类型安全，用子给父赋值
+
+//逆变
+type pFunc = (p:Parent) => Parent
+type cFunc = (c:Child) => Child
+
+let pp:pFunc = (p1) => p1
+let cc:cFunc = (c1) => c1
+
+pp=cc //类型不安全，c比p多出来的属性不应该被传递给p1调用
+```

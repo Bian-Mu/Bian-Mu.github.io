@@ -118,3 +118,28 @@ react-vibe可以控制js执行时长
 - cssom树：css object model，以对象形式存储stylesheets，包括内部`<style>`、外部`<link>`、行内`<div style="">`、浏览器默认的样式表，根据规则与选择器生长
 - 合成线程：来自渲染进程
 - GPU进程：来自浏览器
+
+#### reflow
+
+当cssom或者dom发生改变并导致几何信息改变时，2-8步都需要再次执行，其中最耗时的是layout，reflow指的就是layout的重新计算
+
+浏览器的优化：为了避免连续多次操作导致反复计算，浏览器会对“改写”操作合并，可以当所有js都完成后再统一计算，从而实现异步。但是异步会导致无法立刻获取最新的属性值，因此当出现“读取”的操作时，reflow立刻发生
+
+#### repaint
+
+当只改动类似“颜色”的属性时，layout与layer可能可以跳过，此时来到repaint
+
+### 属性描述符
+
+一个属性具有很多可以被描述的内容，例如：
+
+1. value 值
+2. writable 写
+3. enumerable 是否可被遍历到
+4. configurable 描述符本身是否可以修改
+5. get/set 函数，为读写行为配置默认行为,与1和2互斥存在
+
+- 描述一个对象的某一个属性，可以通过`Object.getOwnPropertyDescriptor(objA, propA)`，一般是一个对象
+- 可以重新定义描述符`Object.defineProperty(objA, propA, newDescA)`
+- 冻结一个对象`Object.freeze(objA)`来避免直接增改原始数据，可以冻结原型
+- 密封一个对象`Object.seal(objA)`允许改但不允许加
