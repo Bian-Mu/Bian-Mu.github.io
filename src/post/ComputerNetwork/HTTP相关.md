@@ -31,6 +31,10 @@
 - connection：连接状态
 - content-type：数据格式
 - content-encoding：数据压缩格式
+- cache-control：包含max-age-seconds最大生存时间、public可共享缓存、private仅客户浏览器缓存
+- expires：过期时间，优先级更高
+- last-modified：资源最后修改时间，会带上if-modified-since字段
+- etag：资源的唯一标识符，会带上if-none-match
 
 ### GET与POST
 
@@ -40,7 +44,15 @@ GET从服务器获取资源，POST根据请求的载荷对资源做出处理
 
 #### HTTP缓存
 
-分为强制缓存与协商缓存（如304）
+分为强制缓存与协商缓存
+
+1. 第一次普通请求，服务器200
+2. 后续请求会先检查强缓存，浏览器200
+3. 否则检查协商缓存服务器发现资源未更新，浏览器304
+4. 资源更新，浏览器200
+
+强制缓存：Cache-Control，Expires
+协商缓存：Last-Modified，ETag
 
 ### HTTP版本
 
