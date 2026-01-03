@@ -35,3 +35,53 @@
 
 1. `s.padStart(sum,char)`当s长度不足sum时前置补char
 2. s为只包含数字的字符串时，`numS=+s`会直接赋其number值
+
+### js原生函数
+
+#### call
+
+调用函数，并显式的指定this与参数，当this为null/undefined时，非严格被替换为window/global，严格则保持undefined。需要注意的是箭头函数的this无法被原生函数改变
+
+```js
+    function greet(greeting, punctuation) {
+        return `${greeting}, ${this.name}${punctuation}`;
+    }
+    const person = { name: 'Alice' };
+    console.log(greet.call(person, 'Hi', '!')); // "Hi, Alice!"
+```
+
+#### apply
+
+与call相近，但参数为数组/可迭代对象
+
+#### bind
+
+返回一个绑定了this且已经预置部分参数的函数。
+
+```js
+    const module = {
+        x: 42,
+        getX() { return this.x; },
+    };
+    const unbound = module.getX;
+    const bound = unbound.bind(module); // 绑定this
+    console.log(bound()); // 42
+```
+
+```js
+    function add(a, b, c) { return a + b + c; }
+    const add5 = add.bind(null, 5);
+    console.log(add5(1, 2)); // 8
+```
+
+#### toString
+
+1. `Object.prototype.toString.call(value) // [object value的类型]`
+2. `functionA.toString() //函数的实现代码`
+3. `(10).toString(2) //1010`
+
+#### length
+
+函数的length会返回函数定义中“无默认值、位于第一个带默认值参数之前”的形参个数，不统计rest参数。
+
+- 可以使用arguments.length获取实际传入的参数的个数

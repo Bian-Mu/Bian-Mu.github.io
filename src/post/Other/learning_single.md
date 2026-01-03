@@ -1,8 +1,4 @@
 
-### js
-
-原生函数：`call apply bind toString length`
-
 ### promise
 
 - 函数：`resolve reject all allsettled race any then catch`
