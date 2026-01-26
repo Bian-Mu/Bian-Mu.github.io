@@ -85,3 +85,14 @@
 函数的length会返回函数定义中“无默认值、位于第一个带默认值参数之前”的形参个数，不统计rest参数。
 
 - 可以使用arguments.length获取实际传入的参数的个数
+
+### CommonJS与ES Module
+
+不同点：
+
+- commonjs：运行时加载，this指向当前模块，支持动态require，在浏览器中需要打包
+- esmodule：编译时分析，this指向undefined，import必须在顶层，在nodejs中需要配置
+
+相同点：
+
+每个模块有自己的作用域，都支持循环依赖
