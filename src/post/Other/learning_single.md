@@ -567,3 +567,31 @@ function throttle(fn, wait, { leading = true, trailing = true } = {}) {
 const t = throttle((x) => console.log('[test throttle]', x), 20); // 预期：输出 run（首触发）
 t('run');
 ```
+
+### other
+
+#### 通用柯里化
+
+```js
+function curry(fn) {
+  return function curried(...args) {
+    // 如果传入的参数个数大于等于原函数所需的参数个数
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
+    } else {
+      // 参数不够，返回新函数继续接收剩余参数
+      return function(...args2) {
+        return curried.apply(this, args.concat(args2));
+      };
+    }
+  };
+}
+
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+const curriedSum = curry(sum);
+console.log(curriedSum(1)(2)(3));    // 6
+console.log(curriedSum(1, 2)(3));    // 6
+```
